@@ -1,6 +1,8 @@
+using Domain.Common;
+
 namespace Domain.Entities;
 
-public class Event
+public class Event:Entity
 {
     public string Name;
     public string Type;

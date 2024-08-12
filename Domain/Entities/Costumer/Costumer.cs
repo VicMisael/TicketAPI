@@ -1,4 +1,4 @@
-using Domain.Commoms;
+using Domain.Common;
 
 namespace Domain.Entities.Costumer;
 

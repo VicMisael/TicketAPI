@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketAPI.UnitTests", "Tick
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{675EB299-8D75-40A0-B07D-2B99C718B5B3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{9AF77DD9-AB0A-48EE-82E3-ABE03CE84C5F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -16,6 +18,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{8DDB4245-1BD5-4DBB-8866-4A084B0C79DF} = {BDCDF42B-7DC9-495F-B68B-72BA0EC2503A}
 		{675EB299-8D75-40A0-B07D-2B99C718B5B3} = {E9652ECE-293E-4E30-B36A-B952E156145F}
+		{9AF77DD9-AB0A-48EE-82E3-ABE03CE84C5F} = {E9652ECE-293E-4E30-B36A-B952E156145F}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{8DDB4245-1BD5-4DBB-8866-4A084B0C79DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -26,5 +29,9 @@ Global
 		{675EB299-8D75-40A0-B07D-2B99C718B5B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{675EB299-8D75-40A0-B07D-2B99C718B5B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{675EB299-8D75-40A0-B07D-2B99C718B5B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AF77DD9-AB0A-48EE-82E3-ABE03CE84C5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AF77DD9-AB0A-48EE-82E3-ABE03CE84C5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AF77DD9-AB0A-48EE-82E3-ABE03CE84C5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AF77DD9-AB0A-48EE-82E3-ABE03CE84C5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
