@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E9652ECE-293E-4E30-B36A-B952E156145F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{BDCDF42B-7DC9-495F-B68B-72BA0EC2503A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketAPI.UnitTests", "TicketAPI.UnitTests\TicketAPI.UnitTests.csproj", "{8DDB4245-1BD5-4DBB-8866-4A084B0C79DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{675EB299-8D75-40A0-B07D-2B99C718B5B3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8DDB4245-1BD5-4DBB-8866-4A084B0C79DF} = {BDCDF42B-7DC9-495F-B68B-72BA0EC2503A}
+		{675EB299-8D75-40A0-B07D-2B99C718B5B3} = {E9652ECE-293E-4E30-B36A-B952E156145F}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8DDB4245-1BD5-4DBB-8866-4A084B0C79DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DDB4245-1BD5-4DBB-8866-4A084B0C79DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DDB4245-1BD5-4DBB-8866-4A084B0C79DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DDB4245-1BD5-4DBB-8866-4A084B0C79DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{675EB299-8D75-40A0-B07D-2B99C718B5B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{675EB299-8D75-40A0-B07D-2B99C718B5B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{675EB299-8D75-40A0-B07D-2B99C718B5B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{675EB299-8D75-40A0-B07D-2B99C718B5B3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
