@@ -1,3 +1,3 @@
 namespace Application.UseCases.Customer.Create;
 
-public record CreateCustomerOut();
+public record CreateCustomerOut(Guid id);

@@ -6,8 +6,9 @@ public class CreateCustomerHandler(ICustomerRepository customerRepository) : ICr
 {
     public async Task<CreateCustomerOut> Handle(CreateCustomerIn request, CancellationToken cancellationToken)
     {
-        await customerRepository.Persist(request.ToCustomer(),cancellationToken);
+        var costumer = request.ToCustomer();
+        await customerRepository.Persist(costumer,cancellationToken);
 
-        return new CreateCustomerOut();
+        return new CreateCustomerOut(costumer.Id);
     }
 }

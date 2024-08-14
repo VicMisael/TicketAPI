@@ -29,6 +29,11 @@ public class Event:Entity
         return new Event(Guid.NewGuid(), name, type, date);
     }
     
+    public static Event Create(Guid id, string name, string type, DateTime date)
+    {
+        return new Event(id, name, type, date);
+    }
+    
     
 
     public sealed override void Validate()

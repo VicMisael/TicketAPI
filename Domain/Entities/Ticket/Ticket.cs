@@ -31,6 +31,11 @@ public class Ticket:Entity
         var id = Guid.NewGuid();
         return new Ticket(id, CombineGuidsSimple(id, customerId, eventId), customerId, eventId, DateTime.UtcNow);
     }
+    
+    public static Ticket Create(Guid id,string code,Guid customerId,Guid eventId,DateTime createDate)
+    {
+        return new Ticket(id,code,customerId,eventId,createDate );
+    }
 
     public sealed override void Validate()
     {

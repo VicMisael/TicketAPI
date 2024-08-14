@@ -7,7 +7,7 @@ namespace Application.UseCases.Ticket.Purchase;
 
 public class PurchaseTicketHandle(ITicketRepository ticketRepository,IEventRepository eventRepository,ICustomerRepository customerRepository):IPurchaseTicket
 {
-    public async Task<PurchaseOut> Handle(PurcharseIn request, CancellationToken cancellationToken)
+    public async Task<PurchaseOut> Handle(PurchaseIn request, CancellationToken cancellationToken)
     {
         if (!await eventRepository.ExistsById(request.EventId, cancellationToken))
         {

@@ -9,6 +9,6 @@ public class CreateEvent(IEventRepository eventRepository):ICreateEvent
         var @event=Domain.Entities.Event.Event.Create(request.Name, request.Type, request.EventDate);
         await eventRepository.Persist(@event,cancellationToken);
 
-        return new CreateEventOut();
+        return new CreateEventOut(@event.Id);
     }
 }
