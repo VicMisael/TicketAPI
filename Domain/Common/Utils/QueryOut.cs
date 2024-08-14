@@ -4,5 +4,4 @@ public record QueryOut<T>(
     int CurrentPage,
     int PerPage,
     int Total,
-    IReadOnlyList<T> Items) 
-    where T:Entity ;
+    IReadOnlyList<T> Items);

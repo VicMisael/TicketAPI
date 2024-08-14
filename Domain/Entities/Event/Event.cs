@@ -1,4 +1,7 @@
+using System;
+using System.Linq;
 using Domain.Common;
+using Domain.Common.Exceptions;
 
 namespace Domain.Entities.Event;
 
@@ -8,17 +11,10 @@ public class Event:Entity
     public string Type { get; private set; }
     public DateTime Date { get; private set; }
 
-
-    public Event(string name, string type, DateTime date, int maxTickets)
-    {
-        Name = name;
-        Type = type;
-        Date = date;
-        Validate();
-    }
+    
 
 
-    public Event(Guid id, string name, string type, DateTime date, int maxTickets)
+    private Event(Guid id, string name, string type, DateTime date)
         : base(id) 
     {
         Name = name;
@@ -27,8 +23,24 @@ public class Event:Entity
         Validate();
     }
 
+
+    public static Event Create( string name, string type, DateTime date)
+    {
+        return new Event(Guid.NewGuid(), name, type, date);
+    }
+    
+    
+
     public sealed override void Validate()
     {
-        new EventValidator().Validate(this);
+       var result = new EventValidator().Validate(this);
+        
+        if (!result.IsValid)
+        {
+            // TODO: Return a custom exception
+            throw new ValidationException(
+                result.Errors.Select(e => e.ErrorMessage).ToList()
+            );
+        }
     }
 }

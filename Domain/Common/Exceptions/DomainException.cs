@@ -1,6 +1,5 @@
+using System;
+
 namespace Domain.Common.Exceptions;
 
-public interface DomainException
-{
-    
-}
+public class DomainException(string message) : Exception(message);
