@@ -4,6 +4,7 @@ using Domain.Common.Utils;
 namespace Application.UseCases.Customer.QueryCustomer;
 
 public record CostumerOut(
+    string Id,
     string Name,
     string Email,
     DateTime BirthDate);
@@ -17,6 +18,6 @@ public record QueryCustomerOut(
     public static QueryCustomerOut FromQueryOut(QueryOut<Domain.Entities.Customer.Customer> queryOut)
     {
         return new QueryCustomerOut(queryOut.CurrentPage, queryOut.PerPage, queryOut.Total,
-            queryOut.Items.Select(x => new CostumerOut(x.Name, x.EmailAddress, x.BirthDate)).ToList());
+            queryOut.Items.Select(x => new CostumerOut(x.Id.ToString(),x.Name, x.EmailAddress, x.BirthDate)).ToList());
     }
 };

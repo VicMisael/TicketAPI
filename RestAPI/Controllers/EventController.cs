@@ -1,6 +1,7 @@
 using Application.UseCases.Customer.Create;
 using Application.UseCases.Event.Create;
 using Application.UseCases.Event.List;
+using Application.UseCases.Event.Query;
 using Domain.Common.Utils;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -20,6 +21,7 @@ public class EventController(IMediator mediator) : ControllerBase
         CancellationToken cancellationToken,
         [FromQuery] string? query = null,
         [FromQuery] string? orderBy = null,
+        [FromQuery] bool? showPastEvents =null,
         [FromQuery] QueryOrderDir? dir = null,
         [FromQuery] int? perPage=null,
         [FromQuery] int? page=null )
@@ -28,7 +30,8 @@ public class EventController(IMediator mediator) : ControllerBase
             PerPage:  Math.Max(perPage ?? 15, 1),
             Query: query ?? "",
             OrderBy: orderBy ?? "name",
-            Dir: dir ?? QueryOrderDir.Desc);
+            Dir: dir ?? QueryOrderDir.Desc,
+            ShowPastEvents: showPastEvents??false);
 
         var result = await mediator.Send(listEventIn, cancellationToken);
 

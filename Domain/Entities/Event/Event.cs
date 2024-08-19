@@ -20,13 +20,15 @@ public class Event:Entity
         Name = name;
         Type = type;
         Date = date;
-        Validate();
+
     }
 
 
     public static Event Create( string name, string type, DateTime date)
     {
-        return new Event(Guid.NewGuid(), name, type, date);
+      var @event= new Event(Guid.NewGuid(), name, type, date);
+      @event.Validate();
+      return @event;
     }
     
     public static Event Create(Guid id, string name, string type, DateTime date)

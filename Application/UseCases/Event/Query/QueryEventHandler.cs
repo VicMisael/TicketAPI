@@ -7,7 +7,7 @@ public class QueryEventHandler(IEventRepository eventRepository):IQueryEvent
 {
     public async Task<QueryEventOut> Handle(QueryEventIn request, CancellationToken cancellationToken)
     {
-      var queryOut= await eventRepository.Query(request.ToQueryIn(), cancellationToken);
+      var queryOut = await eventRepository.Query(request.ToQueryIn(),request.ShowPastEvents, cancellationToken);
       return QueryEventOut.FromQueryOut(queryOut);
     }
 }

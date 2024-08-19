@@ -1,14 +1,14 @@
-using Application.UseCases.Event.Query;
 using Domain.Common.Utils;
 using MediatR;
 
-namespace Application.UseCases.Event.List;
+namespace Application.UseCases.Event.Query;
 
 public record QueryEventIn(
     int Page,
     int PerPage,
     string Query,
     string OrderBy,
+    bool ShowPastEvents,
     QueryOrderDir Dir):IRequest<QueryEventOut>
 {
     public QueryIn ToQueryIn()

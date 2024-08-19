@@ -32,7 +32,7 @@ public class ExceptionFilter : IExceptionFilter
 
             case ApplicationException applicationException:
                 apiError = new ApiError(applicationException.Message);
-                statusCode = 400; // Bad Request or appropriate status
+                statusCode = 400; 
                 break;
 
             default:

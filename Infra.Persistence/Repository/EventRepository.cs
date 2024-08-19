@@ -15,15 +15,18 @@ public class EventRepository(ApplicationDbContext context):IEventRepository
         await context.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task<QueryOut<Event>> Query(QueryIn queryIn, CancellationToken cancellationToken)
+    public async Task<QueryOut<Event>> Query(QueryIn queryIn,bool showPastEvents, CancellationToken cancellationToken)
     {
-        // Calculate the number of records to skip based on the current page and items per page
         var toSkip = (queryIn.Page - 1) * queryIn.PerPage;
 
-        // Start with a basic query that tracks no entities to improve performance
+
         var query = Events.AsNoTracking();
 
-        // Apply ordering based on the OrderBy and Dir properties
+        if (!showPastEvents)
+        {
+           query = query.Where(x => x.Date > DateTime.UtcNow);
+        }
+        
         query = (queryIn.OrderBy.ToLower(), QueryOrderDir: queryIn.Dir) switch
         {
             ("name", QueryOrderDir.Asc) => query.OrderBy(x => x.Name).ThenBy(x => x.Id),
@@ -34,8 +37,7 @@ public class EventRepository(ApplicationDbContext context):IEventRepository
             ("date", QueryOrderDir.Desc) => query.OrderByDescending(x => x.Date).ThenByDescending(x => x.Id),
             _ => query.OrderBy(x => x.Id) // Default ordering if none is specified
         };
-
-        // Apply the filter based on the Query parameter
+        
         if (!string.IsNullOrWhiteSpace(queryIn.Query))
         {
             query = query.Where(x =>

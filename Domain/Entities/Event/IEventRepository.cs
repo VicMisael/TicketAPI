@@ -9,7 +9,7 @@ public interface IEventRepository
 {
     Task Persist(Event @event, CancellationToken cancellationToken);
 
-    Task<QueryOut<Event>> Query(QueryIn queryIn, CancellationToken cancellationToken);
+    Task<QueryOut<Event>> Query(QueryIn queryIn, bool pastEvents,CancellationToken cancellationToken);
     
     Task<bool> ExistsById(Guid id, CancellationToken cancellationToken);
 }

@@ -1,3 +1,4 @@
+using System.Globalization;
 using Infra.Persistence;
 using RestAPI.Common;
 using RestAPI.Configuration;
@@ -8,6 +9,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddUseCases();
+
+var cultureInfo = new CultureInfo("en-US");
+
+CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+
 
 builder.Services.AddDbContext<ApplicationDbContext>();
 

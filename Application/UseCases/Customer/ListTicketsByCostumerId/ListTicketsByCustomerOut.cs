@@ -6,7 +6,8 @@ namespace Application.UseCases.Customer.ListTicketsByCostumerId;
 
 public record TicketDto(
     string EventName,
-    string Code
+    string Code,
+    DateTime Date
     );
 
 
@@ -19,7 +20,7 @@ public record ListTicketsByEventNameOut(
 
     public static ListTicketsByEventNameOut FromEventTicketTupleQueryIn(QueryOut<Tuple<Domain.Entities.Event.Event, Domain.Entities.Ticket.Ticket>> @in)
     {
-        var list=@in.Items.Select(x => new TicketDto(x.Item1.Name, x.Item2.Code));
+        var list=@in.Items.Select(x => new TicketDto(x.Item1.Name, x.Item2.Code,x.Item1.Date));
         return new ListTicketsByEventNameOut(@in.CurrentPage, @in.PerPage, @in.Total,
             list.ToList());
     }
