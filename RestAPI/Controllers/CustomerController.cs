@@ -1,5 +1,6 @@
 using Application.UseCases.Customer.Create;
 using Application.UseCases.Customer.ListTicketsByCostumerId;
+using Application.UseCases.Customer.QueryCustomer;
 using Domain.Common.Utils;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -11,6 +12,27 @@ namespace RestAPI.Controllers;
 [Route("api/customers")]
 public class CustomerController(IMediator mediator):ControllerBase
 {
+    [HttpGet]
+    public async Task<IActionResult> ListEvents(
+
+        CancellationToken cancellationToken,
+        [FromQuery] string? query = null,
+        [FromQuery] string? orderBy = null,
+        [FromQuery] QueryOrderDir? dir = null,
+        [FromQuery] int? perPage=null,
+        [FromQuery] int? page=null )
+    {
+        var listEventIn = new QueryCustomerIn(   Math.Max(page ?? 1, 1),
+            PerPage:  Math.Max(perPage ?? 15, 1),
+            Query: query ?? "",
+            OrderBy: orderBy ?? "name",
+            Dir: dir ?? QueryOrderDir.Desc);
+
+        var result = await mediator.Send(listEventIn, cancellationToken);
+
+        return Ok(result);
+    }
+    
     
     [HttpPost]
     [ProducesResponseType(typeof(CreateCustomerOut), StatusCodes.Status201Created)]
