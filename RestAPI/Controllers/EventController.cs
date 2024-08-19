@@ -24,7 +24,7 @@ public class EventController(IMediator mediator) : ControllerBase
         [FromQuery] int? perPage=null,
         [FromQuery] int? page=null )
     {
-        var listEventIn = new ListEventIn(   Math.Max(page ?? 1, 1),
+        var listEventIn = new QueryEventIn(   Math.Max(page ?? 1, 1),
             PerPage:  Math.Max(perPage ?? 15, 1),
             Query: query ?? "",
             OrderBy: orderBy ?? "name",
